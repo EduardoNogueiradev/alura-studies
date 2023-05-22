@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Formulario from '../components/Formulario';
 import Lista from '../components/Lista';
 import Cronometro from '../components/Cronometro'
@@ -12,6 +12,10 @@ function App() {
 
   function selecionaTarefa(tarefaSelecionada: ITarefa) {
     setSelecionado(tarefaSelecionada);
+    setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
+      ...tarefa,
+      selecionado: tarefa.id === tarefaSelecionada.id ? true : false
+    })));
   }
 
   return (
@@ -21,7 +25,7 @@ function App() {
         tarefas={tarefas}
         selecionaTarefa={selecionaTarefa}
       />
-      <Cronometro />
+      <Cronometro selecionado={selecionado} />
     </div>
   );
 }
