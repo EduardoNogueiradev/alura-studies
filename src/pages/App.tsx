@@ -22,7 +22,7 @@ function App() {
     if(selecionado) {
       setSelecionado(undefined)
       setTarefas( tarefasAntigas => tarefasAntigas.map(tarefa => {
-        if(tarefa.id == selecionado.id){
+        if(tarefa.id === selecionado.id){
           return {
             ...tarefa,
             selecionado: false,
